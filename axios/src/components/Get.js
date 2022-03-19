@@ -1,15 +1,17 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import useSound from 'use-sound';
-import boop
+import boopSfx from './N56BNFY-click (1).mp3';
+
 
 
 function Get() {
 
+  const someAudioFile = 'axios/src/components/N56BNFY-click (1).mp3';
   const [len, setlen] = useState([])
   const [border, setborder] = useState([])
   let [random,setrandom]=useState([]);
-  // const [play] = useSound(boopSfx);
+  const [play] = useSound(boopSfx);
   const getfact=()=>{
     axios.get("https://catfact.ninja/fact")
     
@@ -18,32 +20,12 @@ function Get() {
       setborder('border-2 border-amber-200 m-4 p-none rounded-xl ')
 
       
-      
-
+      play()
       setrandom(responce.data.fact)
+      
       console.log(random);
       setlen(responce.data.length)
       console.log(len);
-
-
-
-      
-      
-      // while(ver==false)
-      // {
-      //   setlen(responce.data.length)
-      //     console.log(responce.data.fact);
-
-      //   if(len>100){
-      //     setrandom(responce.data.fact)
-      //     console.log(random);
-      //     ver=true
-      //   }
-      //   // ver=true
-      // }
-
-      // setrandom(responce.data.fact)
-      // console.log(random);
     }) 
   }
 
